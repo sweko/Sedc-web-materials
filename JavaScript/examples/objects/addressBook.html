@@ -7,18 +7,16 @@
 	</head>
 	<body>
 		<h1>Address book demo</h1>
-		<table id="abContainer">
+		<table>
 			<thead>
-				<tr>
-					<th><a href="javascript:void(0)" onclick="alert('ID')">ID</a></th>
+					<th><a href="javascript:void(0)" onclick="alert('ID header clicked')">ID</a></th>
 					<th>First name</th>
 					<th>Last name</th>
 					<th>Age</th>
 					<th>Phone</th>
 					<th>Select</th>
-				</tr>
 			</thead>
-			<tbody></tbody>
+			<tbody id="abContainer"></tbody>
 		</table>
 		<div>
 			<button onclick="addPerson()">Add Person</button>
