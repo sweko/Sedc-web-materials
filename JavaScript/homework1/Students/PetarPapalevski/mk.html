@@ -1,0 +1,130 @@
+<html>
+	<head>
+ 		<title>КОНВЕРЗИЈА</title>
+ 		<meta charset="UTF8">
+ 	</head>
+
+	<body>
+
+		<input id="number" value=""/>
+
+		<button id="btnConvert" onclick="convert()">Convert</button>
+
+		<div id="result"></div>
+
+	<script type="text/javascript">
+
+		var a = ['','еден ','два ','три ','четири ', 'пет ','шест ','седум ','осум ','девет ','десет ','единаесет ','дванаесет ','тринаесет ','четиринаесет ','петнаесет ','шестаесет ','седумнаесет ','осумнаесет ','деветнаесет '];
+
+		var aa = ['','сто ','дваста ','триста ','четрсто ', 'петсто ','шесто ','седумсто ','осумсто ','деветсо '];
+
+	    var b = ['', '', 'дваесет','триесет','четириесет','педесет', 'шеесет','седумдесет','осумдесет','деведесет'];
+	    	
+	    var c = [' милјарди ', ' милиони ', ' илјада ', ''];
+	    var hundred = " сто ";
+	    
+		function convert() {
+
+			var result = document.getElementById("result");
+			var number = parseFloat(document.getElementById("number").value);
+
+			if(isNaN(number) || number<=0 || number>999999999999)
+			{
+				alert("Enter a whole number between [1 - 999,999,999,999]");
+				return;
+			}
+			
+			result.innerHTML = numberToWords(number);
+		}
+
+
+		function numberToWords(num)
+		{
+			
+    		num = num.toString();
+
+    		num = ('000000000000' + num ).substr(-12);
+
+    		num = num.match( /.{3}/g ); 
+
+		    var words = '';
+
+		    for(var i=0;i<c.length;i++)
+		    {
+		    	if(num[i]!="000"){
+			    	words+=convertFunction(num[i],c[i]);
+			    }
+		    }
+		   
+
+		    return words;
+		}
+
+		function convertFunction(num,txt)
+		{
+			var words = "";
+			digit = num.match( /.{1}/g ); 
+
+		    if(digit[0]!="0")
+		    {
+		    	words+=threeDigit(digit)+txt;
+		    	return words;
+		    }else if(digit[1]!="0"){
+		    	words+=twoDigit(digit)+txt;
+		    	return words;
+		    }
+
+		    words+=oneDigit(digit)+txt; 
+
+		    return words;
+		}
+
+		function oneDigit(digit)
+		{
+
+
+			return a[Number(digit[2])];
+		}
+
+		function twoDigit(digit)
+		{
+			var words = "";
+			var temp = Number(digit[1] + digit[2]);
+
+		    if(temp<=19)
+		    {
+		    	words+= a[temp];
+		    	return words;
+		    }else{
+		    	words+= b[Number(digit[1])] + " и " + a[Number(digit[2])];
+		    	return words;
+		    }
+		}
+
+		function threeDigit(digit)
+		{
+			var words = "";
+			var hundredsDigit = aa[Number(digit[0])];
+
+			if(digit[0]!="0")
+			{
+		    		words+= hundredsDigit;
+			}
+
+		    if(digit[1]!="0")
+		    {
+		    	words+=twoDigit(digit) + " ";
+		    	return words;
+		    }else{
+		    	words+=" и ";
+		    }
+
+		    if(digit[2]!="0")
+		    	words+= oneDigit(digit);
+
+		    return words;
+		}
+	 </script>
+
+	 </body>
+</html>

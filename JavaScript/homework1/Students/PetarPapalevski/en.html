@@ -1,0 +1,36 @@
+<html>
+	<head>
+ 		<title>КОНВЕРЗИЈА</title>
+ 		<meta charset="UTF8">
+ 	</head>
+
+	<body>
+
+		<input id="number" value=""/>
+
+		<button id="btnConvert" onclick="convert()">Convert</button>
+
+		<div id="result"></div>
+
+	<script type="text/javascript" src="en.js"></script>
+	<script type="text/javascript">
+
+		function convert() {
+
+			var result = document.getElementById("result");
+			var number = parseFloat(document.getElementById("number").value);
+
+			if(isNaN(number) || number<=0 || number>999999999999)
+			{
+				alert("Enter a whole number between [1 - 999,999,999,999]");
+				return;
+			}
+			
+			result.innerHTML = numberToWords(number);
+		}
+
+
+	 </script>
+
+	 </body>
+</html>

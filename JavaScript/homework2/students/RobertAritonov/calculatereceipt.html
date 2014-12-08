@@ -1,0 +1,73 @@
+<html>
+<head>
+	<script type="text/javascript">
+		function calculateReceipt(){
+			var prices = [50, 75, 125, 70, 40, 60];
+			var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+			var apples=parseInt(document.getElementById("txtApples").value);
+			var oranges=parseInt(document.getElementById("txtOranges").value);
+			var pears=parseInt(document.getElementById("txtPears").value);
+			var lemons=parseInt(document.getElementById("txtLemons").value);
+			var melons=parseInt(document.getElementById("txtMelons").value);
+			var bananas=parseInt(document.getElementById("txtBananas").value);
+			var res=document.getElementById("result");
+			var orders=[];
+			orders.push(apples);
+			orders.push(oranges);
+			orders.push(pears);
+			orders.push(lemons);
+			orders.push(melons);
+			orders.push(bananas);
+			var index=0;
+			var str="";
+			var total="Price of all products is: ";
+			var sum=0;
+			while(index<=orders.length-1){
+				if(orders[index]!=0){
+				str+=orders[index]+ " " + products[index]+ " = " + orders[index]*prices[index]+ "\n";
+				sum+=orders[index]*prices[index];
+				index++;
+			}
+			else{
+				index++;
+			}
+				
+			}
+				total+=sum;
+				res.innerText=str+total;
+			}
+	</script>
+</head>
+<body>
+	<p>Vnesi po kolku od produktite sakas da naracas !! </br> Za onie koi ne sakas da gi naracas stavi 0 !!</p>
+		<table>
+			<tr>
+				<td>Apples: </td>
+				<td><input type="text" id="txtApples"/></td>
+			</tr>
+			<tr>
+				<td>Oranges: </td>
+				<td><input type="text" id="txtOranges"/></td>
+			</tr>
+			<tr>
+				<td>Pears: </td>
+				<td><input type="text" id="txtPears"/></td>
+			</tr>
+			<tr>
+				<td>Lemons: </td>
+				<td><input type="text" id="txtLemons"/></td>
+			</tr>
+			<tr>
+				<td>Melons: </td>
+				<td><input type="text" id="txtMelons"/></td>
+			</tr>
+			<tr>
+				<td>Bananas: </td>
+				<td><input type="text" id="txtBananas"/></td>
+			</tr>
+		</table>
+		<button onclick="calculateReceipt()">Calculate Receipt</button>
+		<hr/>
+		<div id="result"></div>
+</body>
+</html>

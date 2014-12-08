@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Address book demo</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="ab.css" />
+		<script type="text/javascript" src="ab.js"></script>
+	</head>
+	<body>
+		<h1>Address book demo</h1>
+		<table id="abContainer">
+			<thead>
+				<tr>
+					<th><a href="javascript:void(0)" onclick="alert('ID')">ID</a></th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Age</th>
+					<th>Phone</th>
+					<th>Select</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<div>
+			<button onclick="addPerson()">Add Person</button>
+		</div>
+		<div id="personContainer" class="hidden">
+			<table>
+				<tr>
+					<td>
+						<label for="txtId">ID</label>
+					</td>
+					<td>
+						<input type="text" disabled="disabled" readony="readony" id="txtId" value="0"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="txtFirstName">First Name</label>
+					</td>
+					<td>
+						<input type="text" id="txtFirstName"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="txtLastName">Last Name</label>
+					</td>
+					<td>
+						<input type="text" id="txtLastName"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="txtAge">Age</label>
+					</td>
+					<td>
+						<input type="text" id="txtAge"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="txtPhone">Phone</label>
+					</td>
+					<td>
+						<input type="text" id="txtPhone"></input>
+					</td>
+				</tr>
+				<tr colspan="2">
+					<td>
+						<button onclick="savePerson()">Save Person</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>
