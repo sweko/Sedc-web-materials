@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<style>
+</style>
+</head>
+<body>
+<div id="table">
+	<tr><th>Fruit</th><th>Quantity</th></tr>
+    <tr>
+        <td>Apples</td>
+		<td><input id="apples" type="text" name="txt" placeholder="1kg/50$"/></td>
+    </tr>
+    <tr>
+        <td>Oranges</td>
+		<td><input id="oranges" type="text" name="txt" placeholder="1kg/75"/></td>
+    </tr>
+    <tr>
+        <td>Pears</td>
+		<td><input id="pears" type="text" name="txt" placeholder="1kg/125"/></td>
+    </tr>
+    <tr>       
+        <td>Lemons</td>		
+		<td><input id="lemons" type="text" name="txt" placeholder="1kg/70"/></td>   
+	</tr>
+    <tr>    
+        <td>Bananas</td>
+		<td><input id="bananas" type="text" name="txt" placeholder="1kg/40"/></td>
+   </tr>
+	<tr>
+        <td>Melons</td>
+		<td><input id="melons" type="text" name="txt" placeholder="1kg/60"/></td>  
+	</tr>
+</table>
+</div>
+<div id="shopping">
+<button id="button" onclick="total()">Shopping </button>
+	<p>You bought</p> 
+<div id = "shopping_price"/></div>
+</div>
+ <script type="text/javascript">
+	var prices = [50, 75, 125, 70, 40, 60];
+	var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+	
+	function total (){
+		document.getElementById("shopping_price").innerHTML= "" ;
+		var pricetotal = document.getElementById("shopping_price");
+		var prt = pricetotal.innerHTML;
+		var total=0;
+		var kgproduct=document.getElementsByTagName("input");
+		var praznaniza = [];
+			for (var i=0 ; i<prices.length; i++){
+				var kgtotal = kgproduct[i].value;
+				var price_per_kg = prices[i] * kgtotal;
+				praznaniza.push(price_per_kg);
+				total+=price_per_kg ;
+				prt += "<p>" + kgtotal + " " + "kg" + "  " + products[i] + " " + "=" + price_per_kg + " </p>";	
+			}
+				praznaniza.push(total);
+				pricetotal.innerHTML = prt + "Total price  " + praznaniza[praznaniza.length -1 ];
+	}
+
+
+</script>
+</body>
+</html>

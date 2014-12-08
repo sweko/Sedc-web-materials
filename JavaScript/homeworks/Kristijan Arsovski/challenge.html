@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>CHALLENGE TASK</title>
+<style>
+#wrapper{
+	width:960px;
+	min-height:250px;
+	margin: 0px auto;
+	border:1px solid #E4E4E4;
+}
+#left_content_wrapper{
+	width:345px;
+	float:left;
+	margin:25px 10px 10px 10px;
+}
+#right_content_wrapper{
+	width:345px;
+	float:left;
+	margin:25px 10px 10px 10px;
+}
+#btn_field{
+	width: 50px;
+	float:left;
+	margin:10px;
+	padding-left: 25px;
+}
+#footer_wrapper{
+	width:960px;
+	margin: 0px auto;
+	border:1px solid #E4E4E4;
+}
+#form{
+	background-color:#DDF581;
+	width:230px;
+	padding:10px;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="left_content_wrapper">
+		<table style="background-color:#DDF581" border="1px">
+			<thead>
+				<tr><th>ID</th><th>ARTICLE</th><th>DESCRIPTION</th><th>PRICE</th><th>CHECK</th></tr>
+			</thead>
+			<tbody id="table1">
+			</tbody>
+		</table>
+	</div>
+	<div id="btn_field">
+	<button id="add" onclick="moveToRight()"> > </button><br/><br/>
+	<button id="back" onclick="moveToLeft()"> < </button>
+	</div>
+	<div id="right_content_wrapper">
+		<table style="background-color:#DDF581" border="1px">
+			<thead>
+				<tr><th>ID</th><th>ARTICLE</th><th>DESCRIPTION</th><th>PRICE</th><th>CHECK</th></tr>
+			</thead>
+			<tbody id="table2">
+			</tbody>
+		</table>
+	</div>
+</div>
+<div id="footer_wrapper">
+	<div id="form">
+		<p style="margin-right:50px;text-align:center;">Article:</p><input type="text" id="art" name="article" placeholder="Insert Article!" style="width:222px; margin-bottom: 20px;"/><br/>
+		<p style="margin-right:19px;text-align:center;">Description:</p><textarea id="des" name="article" placeholder="Insert Description!" style="width:220px; margin-bottom: 20px;"></textarea><br/>
+		<p style="margin-right:61px;text-align:center;">Price:</p><input type="text" id="pri" name="article" placeholder="Insert Price!" style="width:222px;"/><br/><br/>
+		<button id="dis" onclick="discardRow()" style="margin-right:40px;margin-left:20px; width:70px">Discard</button>
+		<button id="save" onclick="saveRow()" style="width:70px">Save</button>
+		<button id="save" onclick="addRow()" style="width:70px">AddRow</button>
+	</div>
+</div>
+
+<script>
+	function discardRow() {
+        
+	}
+	function addRow(){
+		if(saveRow() == 0)
+		return;
+		var table = document.getElementById("table1");
+		var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+		var cell1 = row.insertCell(0);
+        cell1.innerHTML = rowCount + 1;
+		var cell2 = row.insertCell(1);
+		cell2.innerHTML = document.getElementById("art").value;
+		var cell3 = row.insertCell(2);
+		cell3.innerHTML = document.getElementById("des").value;
+		var cell4 = row.insertCell(3);
+		cell4.innerHTML = document.getElementById("pri").value;
+		var cell5 = row.insertCell(4);
+        var element1 = document.createElement("input");
+        element1.type = "checkbox";
+        element1.name="chkbox[]";
+        cell5.appendChild(element1);
+ 
+	}
+
+	function saveRow(){
+		var article = document.getElementById("art").value;
+		if(article == "" || article == "undefined"){
+			alert("invalid article");
+			return false;
+		}
+		var description = document.getElementById("des").value;
+		if(description.search(" ") == -1){
+			alert("Your description must contain at least two words!!!");
+			return false;
+		}
+		var price = document.getElementById("pri").value;
+		if(isNaN(price)){
+			alert("Invalid price");
+			return false;
+		}
+		else if(price < 10 || price > 200){
+			alert("Invalid price");
+			return false;
+		}
+		return true;
+	}
+	function moveToLeft(){
+		
+	}
+	function moveToRight(){}
+</script>
+</body>
+</html>

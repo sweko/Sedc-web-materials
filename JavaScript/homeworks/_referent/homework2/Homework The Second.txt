@@ -1,0 +1,43 @@
+Title: Counting money
+Date: 01.12.2014
+Deadline: 04.12.2014, 23:59:59.999 (END OF DAY)
+
+Description:
+Our user has a grocery store, and needs a web-powered receipt generator. Fortunately, he never changes the prices of his items, or the items he sells. Also fortunately, he is near a wholesale distributor, so he always has an up to date inventory of 100 items of each product he sells. Help him make a web-powered receipt generator, so he can show off to potential investors.
+
+Details:
+Make a web-page (and a javascript program) with the following functionalities:
+1. It should have one entry box for every product the grocer sells
+2. It should accept only integer values in the 1-100 range. [*]
+3. It should have a button to finish the receipt entry
+4. When the button is pressed it should show a receipt in a specified format [**]
+5. The prices will be given with [***]
+	var prices = [50, 75, 125, 70, 40, 60];
+6. The product list is given with [***]
+	var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+7. The code should have a separate function called "calculateReceipt" that receives an array of integers, and returns another array of product prices, along with a grand total [****]
+
+[*] Both a validated text input or a select box are fine
+[**] Don't worry about printing, only showing the receipt is enough for now
+[***] Feel free to add your own products or prices, the program should work with any price/product list
+[****] This means that the result array will have one more element than the entry array
+
+Example:
+If the entry array is 
+	var shoppingList = [5, 0, 3, 4, 0, 3];
+which means that the customer bought, 5 apples, 0 oranges, 3 pears, 4 lemons, 0 melons and 3 bananas, the receipt should look like this:
+
+You bought
+ 5 Apples  =  250
+ 3 Pears   =  375
+ 4 Lemons  = 280
+ 3 Bananas = 180
+----------------
+  Total = 1085
+
+(The exact formatting of the output text will not be tested, you don't have to align the numbers)
+
+This homework is valid for both groups
+
+Good Luck,
+SW

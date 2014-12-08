@@ -1,0 +1,49 @@
+Title: Counting money
+Date: 01.12.2014
+Deadline: 04.12.2014, 23:59:59.999 (END OF DAY)
+
+Description:
+Our user needs to print invoices for some trinkets she will be selling. She is not good at reading numbers, so we must help her. She wants to enter a number that should be invoiced, and to recieve the text that should be put in the "with words" part of the invoice. You must help her print the invoices, that must be mailed on friday morning. 
+
+Details:
+Make a web-page (and a javascript program) with the following functionalities:
+1. It should have a method of entering a value (either by prompt or by text-box)
+2. It should verify whether the entered value is actually a whole number [*]
+3. It should verify that the range of the entered number is valid [*]
+4. It should display the textual value of the entered number
+5. The valid range for numbers is [1 - 999,999,999,999]
+6. You should have a separate function called "numberToWords" that takes a number as input and returns a string.
+
+Some (valid) examples:
+#			English
+1			"One"
+2			"Two"
+11			"Eleven"
+21			"Twenty one"
+192			"One hundred ninety two"
+1187		"One thousand one hundred eighty seven"
+2000		"Two thousand"
+21011		"Twenty one thousand eleven"
+12341678	"Twelve million three hundred forty one thousand six hundred seventy eight"
+128341679901 "One hundred twenty eight billion three hundred forty one million six hundred seventy nine thousand nine hundred one"
+
+[*] It should notify the user accordingly if the value is not valid
+
+This homework is valid for both groups
+
+Good Luck,
+SW
+
+П.С. Втора стаза од домашната: Да се направи истата задача за македонски јазик
+#			Македонски
+1			"Еден"
+2			"Два"
+11			"Единаесет"
+21			"Дваесет и еден"
+192			"Сто девеесет и два"
+1187		"Илјада сто осумдесет и седум"
+2000		"Две илјади"
+21011		"Дваесет и една илјада единаесет"
+12341678	"Дванаесет милиони триста четериесет и една илјада шестотини седумдесет и осум"
+128341679901 "Сто дваесет и осум милијарди триста четериесет и еден милион шестотини седумдесет и девет илјади девестотини и еден"
+

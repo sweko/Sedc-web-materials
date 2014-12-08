@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="description" content="da vneseme broj preku tastatura, i na ekran da ni go ispecati so bukvi" />
+		<meta name="author" content="Mitko Miloshev" />
+		<meta charset="UTF-8"/>
+		<title>Number to Words</title>
+	</head>
+	<body>
+		<input id="input" type="text">
+		<button id="button" onclick="siri()">Pretvori</button>
+		
+		<script type="text/javascript">
+			function siri(){
+				var edinici=[" ","eden","dva","tri","cetiri","pet","sest","sedum","osum","devet"];
+				var desetki=[" "," ","dvaeset","trieset","ceterieset","pedeset","seeset","sedumdeset","osumdeset","devedest"];
+				var cifra=0;
+				var vrednost = parseInt(document.getElementById("input").value);
+				var brojki=[];
+
+				while (vrednost>0){
+					cifra=vrednost%10;
+					vrednost=parseInt(vrednost/10);
+					brojki.push(cifra);
+				}
+
+				if (typeof desetki[brojki[1]]=='undefined') {
+					document.write(edinici[brojki[0]]);
+				}
+				else if (edinici[brojki[0]]==" ") {
+					document.write(desetki[brojki[1]]);
+				}
+				else if (parseInt(document.getElementById("input").value)>10 && parseInt(document.getElementById("input").value)<20) {
+					document.write(edinici[brojki[0]]+"naeset");
+				}
+				else if (document.getElementById("input").value==10) {
+					document.write("deset");
+				}
+				else {
+					document.write(desetki[brojki[1]]+" i "+edinici[brojki[0]]);
+				}
+			}
+		</script>
+	</body>
+</html>

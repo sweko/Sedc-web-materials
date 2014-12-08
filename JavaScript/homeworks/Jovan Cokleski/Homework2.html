@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<input type="text" id="Avocado" placeholder="Avocado" /><br />
+	<input type="text" id="Mango" placeholder="Mango" /><br />
+	<input type="text" id="Aples" placeholder="Aples" /><br />
+	<input type="text" id="Orange" placeholder="Orange" /><br />
+	<input type="text" id="Lemons" placeholder="Lemons" /><br />
+	<input type="text" id="Watermelon" placeholder="Watermelon" /><br />
+	<button onclick="calculate()">Calculate </button>
+	<div>
+		<span id="product1"></span><br />
+		<span id="product2"></span><br />
+		<span id="product3"></span><br />
+		<span id="product4"></span><br />
+		<span id="product5"></span><br />
+		<span id="product6"></span><br />
+		<b><span id="total"></span></b><br />
+	</div>
+	
+	<script type="text/javascript">
+		
+		function calculate() {
+			
+			var Avocado = document.getElementById("Avocado").value;
+			var Mango = document.getElementById("Mango").value;
+			var Aples = document.getElementById("Aples").value;
+			var Orange = document.getElementById("Orange").value;
+			var Lemons = document.getElementById("Lemons").value;
+			var Watermelon = document.getElementById("Watermelon").value;
+			var productReceipt = document.getElementById("productReceipt")
+			
+			var checkNumber = [Avocado, Mango, Aples, Orange, Lemons, Watermelon];
+			
+			var product1 = document.getElementById("product1");
+			var product2 = document.getElementById("product2");
+			var product3 = document.getElementById("product3");
+			var product4 = document.getElementById("product4");
+			var product5 = document.getElementById("product5");
+			var product6 = document.getElementById("product6");
+			
+			var productReceipt = [product1, product2, product3, product4, product5, product6]		
+			
+			var result = document.getElementById("total");
+			for (i = 0; i < checkNumber.length; i++) {
+				if (parseFloat(checkNumber[i]) % 1 !== 0) {
+					alert("Please enter a whole number from 1 - 100");
+				} 
+				if (parseInt(checkNumber[i]) < 1 || parseInt(checkNumber[i]) > 100) {
+					alert("Please enter a whole number from 1 - 100");
+				}
+			}
+			
+			var quantity = [];
+			
+			for (i = 0; i < checkNumber.length; i++) {
+				quantity.push(parseInt(checkNumber[i]));
+			}
+
+			var prices = [50, 75, 125, 70, 40, 60];
+			var products = ['Avocado', 'Mango', 'Aples', 'Orange', 'Lemons', 'Watermelon'];
+						
+			var quantityPrice = [];
+			
+			for (var i = 0; i < quantity.length; i++) {
+				quantityPrice.push(quantity[i] * prices[i]);
+			}
+			
+			for (var i = 0; i < quantity.length; i++) {
+				productReceipt[i].innerText = products[i] + " = " + quantityPrice[i];
+			}
+			
+			var receiptTotal = 0;
+			for (i = 0; i < quantityPrice.length; i++) {
+				receiptTotal = receiptTotal + quantityPrice[i];
+			}
+			result.innerText = "Total = " + receiptTotal;
+
+		}
+	</script>
+</body>
+</html>

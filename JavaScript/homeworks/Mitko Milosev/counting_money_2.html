@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Products</h1>
+		<p>Please select which products you want to buy.</p>
+		<form>
+		<table>
+			<thead>
+				<tr>
+					<td>Product</td>
+					<td>Quantity</td>
+				</tr>
+			<thead>
+			
+			<tbody>
+				<tr>
+					<td>Apples</td>
+					<td><input id="fruit1" type="number" value="0"></td>
+				</tr>
+				<tr>
+					<td>Oranges</td>
+					<td><input id="fruit2" type="number" value="0"></td>
+				</tr>
+				<tr>
+					<td>Pears</td>
+					<td><input id="fruit3" type="number" value="0"></td>
+				</tr>
+				<tr>
+					<td>Lemons</td>
+					<td><input id="fruit4" type="number" value="0"></td>
+				</tr>
+				<tr>
+					<td>Melons</td>
+					<td><input id="fruit5" type="number" value="0"></td>
+				</tr>
+				<tr>
+					<td>Bananas</td>
+					<td><input id="fruit6" type="number" value="0"></td>
+				</tr>				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" style="text-align:center"><input type="button" value="Finish" onclick="calculateReceipt()"><input type="button" value="Reset" onclick="reset()"></td>
+				</tr>
+			</tfoot>
+		</table>
+		</form>
+		
+		<script>
+			var products=["Apples","Oranges","Pears","Lemons","Melons","Bananas"];
+			var prices=[50,75,125,70,40,60];
+			
+			function calculateReceipt(){
+				var receipt=[];
+				var quantity=[];
+				var total=0;
+				var temporary=0;
+				var pomnozeno=0;
+				
+				for (i=1; i<=products.length; i++) {
+					if (document.getElementById("fruit"+i).value<0 || document.getElementById("fruit"+i).value>100) {
+						alert("Za proizvodot "+products[i-1]+" vnesete vrednost pomegu 0 i 100");
+						break;
+					} else {
+						temporary=document.getElementById("fruit"+i).value;
+						quantity.push(temporary);
+					}
+				}
+
+				for (i=0; i<quantity.length; i++) {
+					pomnozeno = prices[i]*quantity[i];
+					total=total+pomnozeno;
+					receipt.push(pomnozeno);
+				}
+				receipt.push(total);
+				
+				document.writeln("You bought <br />");
+				
+				for (i=0; i<receipt.length-1; i++) {
+					document.writeln(quantity[i]+" "+products[i]+" "+receipt[i]+"<br />");
+				}
+				document.write("-------------------<br />");
+				document.write("Total = "+receipt[receipt.length-1]);
+
+			}
+		</script>
+	</body>
+</html>

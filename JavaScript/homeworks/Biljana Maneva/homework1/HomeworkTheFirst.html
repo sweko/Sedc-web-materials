@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function convertNumber(){
+			var entry = document.getElementById("userInput").value;
+			var number = parseInt(entry);
+			var result = document.getElementById("result");
+			if (isNaN(number)) {
+				result.innerHTML = "<b style='color:red'>Invalid number</b>";
+				return;
+			}
+			if (parseFloat(entry) % 1 !== 0) {
+				result.innerHTML = "<b style='color:red'>Number is not integer</b>";
+				return;
+			}
+			if (number < 1 || number > 999999999999) {
+				result.innerHTML = "<b style='color:red'>Number out of range</b>";
+				return;
+			}
+			var words = numberToWordsCap(number);
+			result.innerHTML = words;
+			}
+			var oneDigit = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+			var teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+			var tens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+			var thousands = ['', 'thousand', 'million', 'billion'];
+			var numberToWordsCap = function (number) {
+			var result = capitaliseFirstLetter(numberToWords(number).trim());
+			return result;
+			}
+			
+			function capitaliseFirstLetter(string) {
+				return string.charAt(0).toUpperCase() + string.slice(1);
+			}
+			var numberToWords = function (number) {
+				if (number === 0)
+					return "";
+				if (number < 10)
+					return oneDigit[number - 1];
+				if ((number > 10) && (number < 20))
+					return teens[number - 10 - 1];
+				if (number < 100) {
+					var low = number % 10;
+					var high = Math.floor(number / 10);
+					if (low === 0) {
+						return tens[high - 1];
+					}
+					else {
+						return tens[high - 1] + " " + oneDigit[low - 1];
+					}
+			}
+			if (number < 1000) {
+			var low = number % 100;
+			var high = Math.floor(number / 100);
+			return oneDigit[high - 1] + " hundred " + numberToWords(low);
+			}
+			var thouNums = splitThousands(number);
+			var thouWords = [];
+			for (var i = 0; i < thouNums.length; i++) {
+				var current = numberToWords(thouNums[i]);
+				if (current !== '') {
+					thouWords.push(current + ' ' + thousands[i]);
+				}
+			}
+			thouWords.reverse();
+			var result = thouWords[0];
+			for (var i = 1; i < thouWords.length; i++) {
+				result += ' ' + thouWords[i];
+			}
+			return result;
+			}
+
+			var splitThousands = function (number) {
+				var result = [];
+				while (number !== 0) {
+					var thousand = number % 1000;
+					number = Math.floor(number / 1000);
+					result.push(thousand);
+				}
+				return result;
+			}
+	</script>
+</head>
+<body>
+	<input type="text" id="userInput" name="number" />
+	<button onclick="convertNumber()">Submit</button>
+	<div id="result"></div>
+
+</body>
+</html>

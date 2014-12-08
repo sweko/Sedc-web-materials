@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>DOMASNO</title>
+	</head>
+
+	<body>
+	
+	Apples (50):<input id="apples" type="number" value="" min="1" max="100">
+	<br>
+	oranges (75):<input id="oranges" type="number" value="" min="1" max="100">
+	<br>
+	Pears (125):<input id="pears" type="number" value="" min="1" max="100">
+	<br>
+	Lemons (70):<input id="lemons" type="number" value="" min="1" max="100">
+	<br>
+	Melons (40):<input id="melons" type="number" value="" min="1" max="100">
+	<br>
+	Bananas (60):<input id="bananas" type="number" value="" min="1" max="100">
+	<br>
+	<button onclick="myFunction()">Racunaj</button>
+	<p id="demo"></p>
+	<br>
+	<div id="vkupno">
+	<div>
+	
+	
+	<script type="text/javascript">
+	function myFunction() {
+		var A = document.getElementById("apples").value;
+		var B = document.getElementById("oranges").value;
+		var C = document.getElementById("pears").value;
+		var D = document.getElementById("lemons").value;
+		var E = document.getElementById("melons").value;
+		var F = document.getElementById("bananas").value;
+
+		
+		// position:           0          1        2         3         4          5
+		var quantity = [       A,         B,       C,        D,        E,         F];
+		var prices   = [	  50, 		 75, 	 125, 	    70,       40,        60];
+		var products = ['Apples ', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+		
+		var total = 0;
+		var rezultat = "You bought<br>" 
+		for (var i = 0; i < 6; i++) {
+			if (quantity[i] > 0) {
+				rezultat = rezultat + quantity[i] + " " + products[i] + " " +"=" + " " + quantity[i] * prices[i] + "<br>";
+			}
+			total = total + quantity[i] * prices[i];
+		}
+		rezultat = rezultat + "--------------";
+		
+		
+		document.getElementById("demo").innerHTML = rezultat;
+		
+		document.getElementById("vkupno").innerHTML = total;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	</script>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+	<table width="490px" border="1" style="border-collapse:collapse;background-color:#DDF581">
+    <tr>
+        <td>1kg = 50</td>
+        <td>Apples</td>
+        <td><input id="apple" type="text" name="txt"/></td>
+		<td><input id="tAppl" type="text" name="txt" placeholder="total apple"/></td>
+    </tr>
+    <tr>
+        <td>1kg = 75</td>
+        <td>Oranges</td>
+        <td><input id="orange" type="text" name="txt"/></td>
+		<td><input id="tOrg" type="text" name="txt" placeholder="total oranges"/></td>
+    </tr>
+    <tr>
+        <td>1kg = 125</td>
+        <td>Pears</td>
+        <td><input id="pears" type="text" name="txt"/></td>
+		<td><input id="tPea" type="text" name="txt" placeholder="total pears"/></td>
+    </tr>
+    <tr>
+        <td>1kg = 70</td>
+        <td>Lemons</td>
+        <td><input id="lemons" type="text" name="txt"/></td>
+		<td><input id="tLem" type="text" name="txt" placeholder="total lemons"/></td>
+    </tr>
+    <tr>
+        <td>1kg = 40</td>
+        <td>Bananas</td>
+        <td><input id="bananas" type="text" name="txt"/></td>
+		<td><input id="tBan" type="text" name="txt" placeholder="total bananas"/></td>
+    </tr>
+	<tr>
+        <td>1kg = 60</td>
+        <td>Melons</td>
+        <td><input id="melon" type="text" name="txt"/></td>
+		<td><input id="tMel" type="text" name="txt" placeholder="total melons"/></td>
+    </tr>
+	
+</table><br/><br/>
+<button id="btn" onclick="cost()" style="background-color:#DDF581">Total</button>
+Total fruits:<input type = "text" id = "fruits" size ="5" placeholder="Total fruits" style="width:150px"/>
+Total price:<input type = "text" id = "cost" size ="5" placeholder="Total cost" style="width:150px"/>
+ <script>
+	 function cost() {
+		var apple = document.getElementById("apple").value;
+		var a = apple * 50;
+		var r = a;
+		document.getElementById("tAppl").value = r + " " + "denari";
+        var orange = document.getElementById("orange").value;
+        var b = orange * 75;
+		var re = b;
+		document.getElementById("tOrg").value = re + " " + "denari";
+        var pear = document.getElementById("pears").value;
+        var c = pear * 125;
+		var res = c;
+		document.getElementById("tPea").value = res + " " + "denari";
+        var lemon = document.getElementById("lemons").value;
+        var d = lemon * 70;
+		var resu = d;
+		document.getElementById("tLem").value = resu + " " + "denari";
+		var banana = document.getElementById("bananas").value;
+        var f = banana * 40;
+		var resul = f;
+		document.getElementById("tBan").value = resul + " " + "denari";
+		var melones = document.getElementById("melon").value;
+        var g = melones * 60;
+		var result = g;
+		document.getElementById("tMel").value = result + " " + "denari";
+        var total = eval(a + b + c + d + f + g);
+        document.getElementById("cost").value = total + " " + "den";  
+		var fTotal = eval(apple.value + orange.value + pear.value + lemon.value + banana.value + melones.value);
+		document.getElementById("fruits").value = fTotal + " " + "ovosje";  
+
+
+        }
+</script>
+</body>
+</html>

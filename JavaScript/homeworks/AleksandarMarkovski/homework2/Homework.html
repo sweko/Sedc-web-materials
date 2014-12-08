@@ -1,0 +1,123 @@
+<!DOCTYP HTML>
+<html>
+	<head>
+		<title>Grocer</title>
+	</head>
+	<body>
+		<div id="content">
+			<div id="inputs">
+				
+			</div>
+			<button id="button" onClick="finish();">Finished</button>
+			</br>
+			<div id="receipt">
+				<div id="result">
+				</div>
+				
+				<div id="total">
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas', 'Wallnuts'];
+		
+		(function() {
+		
+			var inputs = document.getElementById("inputs");
+		
+			for(var i = 0; i < products.length; i++) {
+				inputs.innerHTML += "<p>" + products[i] + ": <input type='number' id='" + products[i] + "' value='0' ></input></p>"
+			}
+		})();
+	
+	
+		function finish()
+		{
+			var boughtItems = [];
+			var inputs = document.getElementById("inputs");
+		
+			for(var i = 0; i < products.length; i++) {
+			    console.log(products[i]);
+				boughtItems[i] = guard(document.getElementById(products[i]).value)
+				console.log(boughtItems);
+			}
+			
+			
+			
+			for(var i = 0; i < boughtItems.length; i++)
+			{
+				if(isNaN(boughtItems[i]))
+				{
+					return;
+				}
+			}
+			
+		    var pricePerBoughtItem = calculateReceipt(boughtItems);
+			console.log(pricePerBoughtItem);
+			
+			var receiptDiv = document.getElementById("result");
+			receiptDiv.innerHTML = "<p>You bought</p>";
+			
+			for(var i = 0; i < pricePerBoughtItem.length - 1; i++)
+			{
+				if(boughtItems[i] != 0)
+				{
+			    receiptDiv.innerHTML += "<p>" + boughtItems[i] + " " + products[i] + " =  " + pricePerBoughtItem[i] + "</p>";
+				}
+			}
+			var totalDiv = document.getElementById("total").innerHTML = "<p>---------------------</p><p> Total = " + pricePerBoughtItem[pricePerBoughtItem.length - 1] +"</p>";
+			
+			
+			
+			return;
+		}
+		
+		
+		function calculateReceipt(arguments)
+		{
+			var prices = [50, 75, 125, 70, 40, 60, 20];
+			
+			var sum = [];
+			for(var i = 0; i < prices.length; i++)
+			{
+				sum[i] = prices[i] * arguments[i];
+			}
+			
+			var grandTotal = 0;
+			for(var i = 0; i < sum.length; i++)
+			{
+				grandTotal += sum[i];
+			}
+			
+			sum.push(grandTotal);
+			
+			return sum;
+		}
+		
+		function guard(input)
+		{
+			var parsedInput = parseInt(input);
+					
+			if(isNaN(parsedInput))
+			{
+				window.alert("Please enter a valid items number.");
+				return;
+			}
+			else if(parsedInput != 0 && parsedInput < 0)
+			{
+				window.alert("Please enter a positive number of items.");
+				return;
+			}
+			
+			else if(parsedInput > 100)
+			{
+				window.alert("There are only 100 items in stock.");
+				return;
+			}
+			
+			return input;
+		}
+	</script>
+</html>

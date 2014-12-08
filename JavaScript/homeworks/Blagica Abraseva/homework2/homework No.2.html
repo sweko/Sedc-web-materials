@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<input type="text" id="apples" placeholder="Apples" /><br />
+	<input type="text" id="oranges" placeholder="Oranges" /><br />
+	<input type="text" id="pears" placeholder="Pears" /><br />
+	<input type="text" id="lemons" placeholder="Lemons" /><br />
+	<input type="text" id="melons" placeholder="Melons" /><br />
+	<input type="text" id="bananas" placeholder="Bananas" /><br />
+	<button onclick="calculateReceipt()">Calculate </button>
+	<div>
+		<span id="display1"></span><br />
+		<span id="display2"></span><br />
+		<span id="display3"></span><br />
+		<span id="display4"></span><br />
+		<span id="display5"></span><br />
+		<span id="display6"></span><br />
+		<b><span id="total"></span></b><br />
+	</div>
+	
+	<script type="text/javascript">
+		
+		function calculateReceipt() {
+			
+			var apples = document.getElementById("apples").value;
+			var oranges = document.getElementById("oranges").value;
+			var pears = document.getElementById("pears").value;
+			var lemons = document.getElementById("lemons").value;
+			var melons = document.getElementById("melons").value;
+			var bananas = document.getElementById("bananas").value;
+			
+			var checkNumber = [apples, oranges, pears, lemons, melons, bananas];
+			
+			var display1 = document.getElementById("display1");
+			var display2 = document.getElementById("display2");
+			var display3 = document.getElementById("display3");
+			var display4 = document.getElementById("display4");
+			var display5 = document.getElementById("display5");
+			var display6 = document.getElementById("display6");
+			
+			var displayReceipt = [display1, display2, display3, display4, display5, display6]		
+			
+			var totalSum = document.getElementById("total");
+			for (i = 0; i < checkNumber.length; i++) {
+				if (parseFloat(checkNumber[i]) % 1 !== 0) {
+					alert("Please enter a whole number from 1 - 100");
+				} 
+				if (parseInt(checkNumber[i]) < 1 || parseInt(checkNumber[i]) > 100) {
+					alert("Please enter a whole number from 1 - 100");
+				}
+			}
+			
+			var quantity = [];
+			
+			for (i = 0; i < checkNumber.length; i++) {
+				quantity.push(parseInt(checkNumber[i]));
+			}
+
+			var prices = [50, 75, 125, 70, 40, 60];
+			var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+						
+			var quantityPrice = [];
+			
+			for (var i = 0; i < quantity.length; i++) {
+				quantityPrice.push(quantity[i] * prices[i]);
+			}
+			
+			for (var i = 0; i < quantity.length; i++) {
+				displayReceipt[i].innerText = products[i] + " = " + quantityPrice[i];
+			}
+			
+			var receiptTotal = 0;
+			for (i = 0; i < quantityPrice.length; i++) {
+				receiptTotal = receiptTotal + quantityPrice[i];
+			}
+			totalSum.innerText = "Total = " + receiptTotal;
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head> </head>
+
+	<body>
+		<label for="apple">Apples</label>
+		<input id="apple"  onkeyup="validation(this)"  />
+		<br />
+		<label for="pear">Pearss</label>
+		<input id="pear" onkeyup="validation(this)"/>
+		<br/>
+		<label for="lemon">Lemons</label>
+		<input id="lemon" onkeyup="validation(this)"/>
+		<br/>
+		<label for="banana">Bananas</label>
+		<input id="banana" onkeyup="validation(this)"/>
+		<button id="calculate" onclick="calculateReceipt()">Calculate</button>
+		<div id="result" ></div>
+		
+		<script type="text/javascript">
+			var prices = [50,  125, 70,  60];
+			var products = ['Apples',  'Pears', 'Lemons', 'Bananas'];
+			function calculateReceipt(){
+				document.getElementById("result").innerHTML ="";
+				var result=document.getElementById("result");
+				var currentResult=result.innerHTML;
+				var total=0;
+				var quantities=document.getElementsByTagName("input");
+				var reciept=[];
+				for(var i=0; i<prices.length;i++ ){
+					var quntity=quantities[i].value;
+					var unitPrice = prices[i]*quntity;
+					reciept.push(unitPrice);
+					total+=unitPrice;
+					currentResult+="<p>"+quntity+" "+products[i]+" = "+unitPrice+"</p><br />";
+				}
+				reciept.push(total);
+				result.innerHTML =currentResult+"<br/>-----------------<br />total = "+reciept[reciept.length-1];
+			}
+			function validation(data) {
+				if (isNaN(data.value)||data.value<0 || data.value>100 ) {
+					data.style.background = "red";
+					data.value = "";
+					data.placeholder = "Внесовте недозволен карактер. Ве молиме внесете само цифри...";
+				}
+				else {
+					data.style.background = "#fff";
+				}	
+			}
+		</script>
+	</body>
+</html>

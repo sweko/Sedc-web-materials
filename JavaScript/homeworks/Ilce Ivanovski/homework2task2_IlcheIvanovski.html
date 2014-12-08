@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<style>
+#table{
+	width:400px;
+	float:left;
+	
+	height:400px;
+}
+#grand_total{
+	min-height: 157px;
+	float: left;
+}
+#shopping{
+ width:200px;
+ min-height:200px;
+ float:left;
+}	
+	
+
+</style>
+</head>
+<body>
+		
+        Apples<input id="tAppl" type="text" name="txt" placeholder="apple"/><br/>
+        Oranges<input id="tOrg" type="text" name="txt" placeholder="oranges"/><br/>
+        Pears<input id="tPea" type="text" name="txt" placeholder="pears"/><br/>
+        Lemons<input id="tLem" type="text" name="txt" placeholder="lemons"/><br/>
+        Bananas<input id="tBan" type="text" name="txt" placeholder="bananas"/><br/>
+        Melons<input id="tMel" type="text" name="txt" placeholder="melons"/><br/>
+
+</div>
+<div id="shopping">
+<button id="btn" onclick="tcost()" >SHOW LIST</button>
+	<p>Smetka</p> 
+<div id = "grand_total"/></div>
+</div>
+ <script type="text/javascript">
+	var prices = [50, 75, 125, 70, 40, 60];
+	var products = ['Apples', 'Oranges', 'Pears', 'Lemons', 'Melons', 'Bananas'];
+	
+	function tcost(){
+		document.getElementById("grand_total").innerHTML = "";
+		var rezultat = document.getElementById("grand_total");
+		var x = rezultat.innerHTML;
+		var total = 0;
+		var shoppingList = document.getElementsByTagName("input");
+		var dipslay = [];
+		for(var i = 0; i < prices.length; i++){
+			var tot = shoppingList[i].value;
+			var pri = prices[i] * tot;
+			dipslay.push(pri);
+			total += pri;
+			x += "<p>" + tot + " " + products[i] + " " + "=" + pri + " </p>";
+			
+		}
+		dipslay.push(total);
+		rezultat.innerHTML = x + "Total = " + dipslay[dipslay.length -1];
+		
+		
+	}
+	
+
+</script>
+</body>
+</html>
