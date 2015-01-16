@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+	<head></head>
+	<body>
+		
+		<input id="numInput" placeholder="Insert 3 digit number"/>
+		<button id="print" onclick="printNum()">Print</button>
+		<div id="showNum"></div>
+		
+		
+		
+		<script type="text/javascript">
+		
+		function printNum(){
+		
+			
+			var inputNum = parseInt(document.getElementById("numInput").value);
+			var digArray = []
+			var teens = [10,11,12,13,14,15,16,17,18,19]
+			var teenWords = ["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+			var numbers=[1,2,3,4,5,6,7,8,9];432
+			var smallNumWords=["one","two","three","four","five","six","seven","eight","nine"];
+			var bigNumWords=["twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+			var numShow= document.getElementById("showNum");
+			var firstNum="" ;
+			var secondNum="" ;
+			var thirdNum="" ;
+			
+			for (var i = 0; i<teens.length;i++){   <!--Proveruvam dali brojot e od 10 do 19-->
+			
+				if (inputNum == teens[i]){       
+				
+					numShow.innerText= teenWords[i];
+					return;
+				};
+			};
+			
+			while (inputNum > 0){       <!--Gi vadam cifrite od vneseniot broj-->
+				var digit = inputNum%10;
+				digArray.push(digit);
+				inputNum = parseInt(inputNum/10);
+			};
+			  
+			for (var j=0;j <  numbers.length; j++){ <!--Proveruvam za sekoja cifra odelno ako e nula da ostavi prazno a ako e broj na koj broj e ednakva i soodvetno da vnese zbor za taa vrednost-->
+<!-- STOTKI ------------------------------------------------>
+				if (digArray[2] == 0){
+				
+				}else if (digArray[2] == numbers[j]){
+				
+					firstNum= smallNumWords[j]+" " + "hundred";<!--Go koristam istiot array kako za edinici i dodavam "hundred" posle soodvetniot zbor->
+				};
+<!--STOTKI-------------------------------------------------->
+<!-- desetki---------------------------------------------- -->
+				if (digArray[1] == 0){
+				
+				}else if(digArray[1] == numbers[j]){ 
+					 secondNum =bigNumWords[j-1];
+				}; 
+<!--desetki-------------------------------------------------  -->
+<!-- edinici------------------------------------------------ -->
+				if(digArray[0] == 0){
+				
+				}else if(digArray[0] == numbers[j]){
+					 thirdNum= smallNumWords[j];
+				};
+<!-- edinici---------------------------------------- -->
+			}; 
+			
+			numShow.innerText= firstNum+" "+secondNum +" "+ thirdNum;<!--Gi printam zborovite po soodveten redosled-->
+				
+		};	
+		</script>
+	</body>
+</html>
